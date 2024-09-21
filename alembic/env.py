@@ -6,8 +6,8 @@ from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import async_engine_from_config
 
 from alembic import context
+from app.config import URL_DATABASE
 
-from app.config import DB_HOST, DB_NAME, DB_USER, DB_PASS, DB_PORT
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
@@ -17,14 +17,10 @@ config = context.config
 
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
-section = config.config_ini_section
-config.set_section_option(section, "DB_HOST", DB_HOST)
-config.set_section_option(section, "DB_PORT", DB_PORT)
-config.set_section_option(section, "DB_NAME", DB_NAME)
-config.set_section_option(section, "DB_USER", DB_USER)
-config.set_section_option(section, "DB_PASS", DB_PASS)
 
+config.set_main_option('sqlalchemy.url', URL_DATABASE)
 
+# url = os.environ.get("URL_DATABASE", config.get_main_option("sqlalchemy.url"))
 # add your model's MetaData object here
 # for 'autogenerate' support
 # from myapp import mymodel

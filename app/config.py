@@ -11,3 +11,4 @@ DB_PASS = os.getenv("DB_PASS")
 
 URL_DATABASE = f"postgresql+asyncpg://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 
+
