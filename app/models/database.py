@@ -5,7 +5,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 engine = create_async_engine(
     # "sqlite+aiosqlite:///database.sqlite3",
-    "postgresql+asyncpg://postgres:adminGrisha@localhost:5432/postgres"
+    "postgresql+asyncpg://postgres:adminGrisha@localhost:5432/FastApi"
 )
 
 new_session = async_sessionmaker(engine, expire_on_commit=False)
