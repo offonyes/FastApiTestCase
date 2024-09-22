@@ -10,5 +10,5 @@ class ProductModel(BaseModel):
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String(50), index=True)
     description: Mapped[str | None]
-    price: Mapped[float]
+    price: Mapped[int]
     quantity: Mapped[int] = mapped_column(index=True)

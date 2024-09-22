@@ -8,7 +8,8 @@ from sqlalchemy.sql import func
 from app.models.database import BaseModel
 
 if TYPE_CHECKING:
-    from app.models.orderitem import OrdetItemModel
+    from app.models.orderitem import OrderItemModel
+
 
 class OrderStatus(enum.Enum):
     InProgress = "In Progress"
@@ -24,3 +25,4 @@ class OrderModel(BaseModel):
     status: Mapped[OrderStatus]
 
     orderitems: Mapped[list["OrderItemModel"]] = relationship(back_populates="order")
+

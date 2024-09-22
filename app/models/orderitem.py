@@ -8,7 +8,8 @@ from app.models.database import BaseModel
 if TYPE_CHECKING:
     from app.models.order import OrderModel
 
-class OrdetItemModel(BaseModel):
+
+class OrderItemModel(BaseModel):
     __tablename__ = 'orderitem'
 
     id: Mapped[int] = mapped_column(primary_key=True)
