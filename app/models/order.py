@@ -24,5 +24,5 @@ class OrderModel(BaseModel):
     created_at: Mapped[datetime.datetime] = mapped_column(server_default=func.now())
     status: Mapped[OrderStatus]
 
-    orderitems: Mapped[list["OrderItemModel"]] = relationship(back_populates="order")
+    orderitems: Mapped[list["OrderItemModel"]] = relationship(back_populates="order", lazy="selectin")
 

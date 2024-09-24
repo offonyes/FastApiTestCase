@@ -16,6 +16,13 @@ class ProductUpdate(ProductCreate):
     pass
 
 
-class ProductOut(ProductBase):
+class ProductResponse(BaseModel):
     id: int
+    name: str
+    description: str
+    price: int
+    quantity: int
+
+    class Config:
+        from_attributes = True
 
