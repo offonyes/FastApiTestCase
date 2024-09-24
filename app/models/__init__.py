@@ -5,7 +5,7 @@ __all__ = (
     "OrderItemModel",
 )
 
-from .database import BaseModel
+from app.database import BaseModel
 from .product import ProductModel
 from .order import OrderModel
 from .orderitem import OrderItemModel

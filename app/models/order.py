@@ -5,7 +5,7 @@ from typing import TYPE_CHECKING
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy.sql import func
 
-from app.models.database import BaseModel
+from app.database import BaseModel
 
 if TYPE_CHECKING:
     from app.models.orderitem import OrderItemModel
@@ -25,4 +25,3 @@ class OrderModel(BaseModel):
     status: Mapped[OrderStatus]
 
     orderitems: Mapped[list["OrderItemModel"]] = relationship(back_populates="order", lazy="selectin")
-

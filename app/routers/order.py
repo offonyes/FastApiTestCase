@@ -5,7 +5,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.crud.order import get_orders, get_order, create_order, update_order
 from app.schemas.order import OrderCreate, OrderUpdate, OrderResponse
-from app.models.database import get_async_session
+from app.database import get_async_session
 
 router = APIRouter(
     prefix="/orders",
@@ -33,9 +33,9 @@ async def read_order(order_id: int, session: AsyncSession = Depends(get_async_se
 
 
 @router.put("/{order_id}/", response_model=OrderResponse)
-async def update_order_endpoint(order_id: int, order_in: OrderUpdate, session: AsyncSession = Depends(get_async_session)):
+async def update_order_endpoint(order_id: int, order_in: OrderUpdate,
+                                session: AsyncSession = Depends(get_async_session)):
     order = await get_order(session, order_id)
     if not order:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Order not found")
     return await update_order(session, order, order_in)
-

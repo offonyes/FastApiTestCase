@@ -23,6 +23,5 @@ class ProductResponse(BaseModel):
     price: int
     quantity: int
 
-    class Config:
+    class ConfigDict:
         from_attributes = True
-

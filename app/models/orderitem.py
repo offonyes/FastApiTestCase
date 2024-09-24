@@ -1,9 +1,9 @@
 from typing import TYPE_CHECKING
 
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from sqlalchemy import String, ForeignKey, Integer
+from sqlalchemy import ForeignKey
 
-from app.models.database import BaseModel
+from app.database import BaseModel
 
 if TYPE_CHECKING:
     from app.models.order import OrderModel

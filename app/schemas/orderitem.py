@@ -10,5 +10,5 @@ class OrderItemResponse(BaseModel):
     product_id: int
     quantity: int
 
-    class Config:
+    class ConfigDict:
         from_attributes = True

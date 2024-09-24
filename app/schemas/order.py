@@ -25,5 +25,5 @@ class OrderResponse(BaseModel):
     status: str
     orderitems: List[OrderItemResponse]
 
-    class Config:
+    class ConfigDict:
         from_attributes = True

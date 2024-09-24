@@ -3,10 +3,10 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.crud.product import get_products, create_product, get_product, delete_product, update_product
 from app.schemas.product import ProductResponse, ProductCreate, ProductUpdate
-from app.models.database import get_async_session
+from app.database import get_async_session
 
 router = APIRouter(
-    prefix="/product",
+    prefix="/products",
     tags=["Product"],
 )
 
@@ -30,7 +30,8 @@ async def read_product(product_id: int, session: AsyncSession = Depends(get_asyn
 
 
 @router.put("/{product_id}/", response_model=ProductResponse)
-async def update_product_endpoint(product_id: int, product_in: ProductUpdate, session: AsyncSession = Depends(get_async_session)):
+async def update_product_endpoint(product_id: int, product_in: ProductUpdate,
+                                  session: AsyncSession = Depends(get_async_session)):
     product = await get_product(session, product_id)
     if not product:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Product not found")
@@ -44,4 +45,3 @@ async def delete_product_endpoint(product_id: int, session: AsyncSession = Depen
     if not product:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Product not found")
     await delete_product(session, product)
-

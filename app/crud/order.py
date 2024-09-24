@@ -1,16 +1,13 @@
-from typing import List, Annotated
-
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy import select, Result
+from sqlalchemy import select
 
-from fastapi import HTTPException, Depends
-from sqlalchemy.orm import joinedload, selectinload
+from fastapi import HTTPException
+from sqlalchemy.orm import selectinload
 
 from app.models.order import OrderModel, OrderStatus
 from app.models.orderitem import OrderItemModel
 from app.models.product import ProductModel
 from app.schemas.order import OrderCreate, OrderUpdate
-from app.schemas.orderitem import OrderItemCreate
 
 
 async def get_orders(session: AsyncSession):
