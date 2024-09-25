@@ -50,4 +50,3 @@ async def test_update_order(test_client):
     response = await test_client.put("/orders/3/", json=new_product)
     assert response.status_code == 200
     print(response.json())
-

@@ -32,7 +32,7 @@ async def read_order(order_id: int, session: AsyncSession = Depends(get_async_se
     return order
 
 
-@router.put("/{order_id}/", response_model=OrderResponse)
+@router.put("/{order_id}/status/", response_model=OrderResponse)
 async def update_order_endpoint(order_id: int, order_in: OrderUpdate,
                                 session: AsyncSession = Depends(get_async_session)):
     order = await get_order(session, order_id)

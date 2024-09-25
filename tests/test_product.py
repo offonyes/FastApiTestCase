@@ -3,7 +3,6 @@ import pytest
 from tests.conftest import test_client
 
 
-@pytest.mark.asyncio(loop_scope='session')
 async def test_create_product(test_client):
     new_product = {
         "name": "Some name",
@@ -53,4 +52,3 @@ async def test_delete_product(test_client):
     assert response.status_code == 204
     response = await test_client.get('/products/1/')
     assert response.status_code == 404
-
