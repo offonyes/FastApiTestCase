@@ -29,7 +29,15 @@ cd FastApiTestCase
 To build and run the project via Docker:
 
 1. Make sure Docker is installed and running.
-2. Start the app with:
+2. Create .env fle with:
+```plaintext
+POSTGRES_USER=...
+POSTGRES_PASSWORD=...
+POSTGRES_DB=...
+POSTGRES_PORT=...
+POSTGRES_HOST=...
+```
+3. Start the app with:
    ```bash
    docker compose up --build
    ```
